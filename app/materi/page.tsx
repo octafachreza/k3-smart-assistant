@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { ArrowUpRight, BookOpen, Clock3 } from "lucide-react";
+import { PageHeading } from "@/components/page-heading";
+import { materials } from "@/data/materials";
+
+export default function MaterialsPage() {
+  return <><PageHeading eyebrow="Pustaka pembelajaran" title="Materi K3" description="Pelajari konsep dasar keselamatan kerja, pengenalan risiko, dan penerapannya di bengkel otomotif." /><div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{materials.map((material, index) => <Link key={material.slug} href={`/materi/${material.slug}`} className="group rounded-2xl border border-slate-100 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-100 hover:shadow-md"><div className="flex items-center justify-between"><span className="rounded-full bg-brand-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-brand-600">{material.category}</span><span className="flex items-center gap-1 text-xs text-slate-400"><Clock3 size={13} />{material.duration}</span></div><div className="mt-5 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-50 text-brand-600"><BookOpen size={20} /></div><h2 className="mt-4 font-bold text-navy-900">{material.title}</h2><p className="mt-2 min-h-10 text-xs leading-5 text-slate-500">{material.summary}</p><span className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 text-xs font-bold text-brand-600">Pelajari materi <ArrowUpRight size={15} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span><span className="sr-only">Materi {index + 1}</span></Link>)}</div></>;
+}
